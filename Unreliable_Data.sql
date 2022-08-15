@@ -39,9 +39,10 @@ SELECT
   SUM(view_events)
 FROM
   dsv1069.item_views_by_category_temp;
-
+  
 -- this table does not have dates
 -- total item view events is 14481
+
 -- check with the main events table
 SELECT
   COUNT(DISTINCT (event_id)) AS Num_of_event
@@ -61,19 +62,21 @@ SELECT
 FROM
   dsv1069.orders
   JOIN dsv1069.users ON orders.user_id = users.parent_user_id;
-
+-- Output:
 -- Num rows = 2604
+
 SELECT
   COUNT(*)
 FROM
   dsv1069.orders;
-
+-- Output:
 -- Num rows = 47402 (much larger)
+
 -- Hence, the join statement above is not the right way
 -- this is because might be there's null values on both table 
 -- which makes the table small
--- use COALESCE statement
 
+-- use COALESCE statement
 SELECT
   COUNT(*)
 FROM
